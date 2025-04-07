@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
          /*
             remove task
         */
-        const removeButton = document.createElement('button');
+        let removeButton = document.createElement('button');
         removeButton.classList.add('remove-btn');
         removeButton.textContent = 'X';
         removeButton.addEventListener('click', function () {
