@@ -1,4 +1,4 @@
-
+/* Basic reset */
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +12,18 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light mode (default) */
+body {
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #fff;
 }
 
 .app-container {
@@ -21,12 +33,23 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 300px;
     text-align: center;
+    transition: background-color 0.3s;
+}
+
+body.dark-mode .app-container {
+    background-color: #333;
 }
 
 h1 {
     margin-bottom: 20px;
     font-size: 24px;
-    color: #333;
+    color: inherit;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 #task-input {
@@ -46,25 +69,68 @@ h1 {
     cursor: pointer;
 }
 
+#add-task-button i {
+    margin-right: 5px;
+}
+
 #add-task-button:hover {
     background-color: #218838;
+}
+
+/* Dark Mode Toggle and Indicator */
+#theme-toggle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Space between the theme toggle and the title */
+}
+
+#theme-toggle-button {
+    background-color: transparent;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#mode-indicator {
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#mode-indicator.light {
+    color: #28a745; /* Green for light mode */
+}
+
+#mode-indicator.dark {
+    color: #ff5722; /* Orange for dark mode */
 }
 
 #task-list {
     margin-top: 20px;
     list-style-type: none;
+    padding: 0;
 }
 
+/* Task styles */
 #task-list li {
     display: flex;
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid #eee;
+    transition: all 0.3s ease;
+    cursor: move;
+    user-select: none; /* Disable text selection during dragging */
 }
 
 #task-list li.completed {
     text-decoration: line-through;
     color: #888;
+}
+
+#task-list li.dragging {
+    opacity: 0.5; /* Make dragged items semi-transparent */
 }
 
 .task-text {
@@ -81,4 +147,47 @@ h1 {
 
 .remove-btn:hover {
     color: darkred;
+}
+
+/* Drag handle styles */
+.drag-handle {
+    width: 20px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: move;
+}
+
+.drag-handle i {
+    font-size: 12px;
+    color: #444;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Animation when adding/removing tasks */
+#task-list li.adding {
+    animation: fadeIn 0.5s ease;
+}
+
+#task-list li.removing {
+    animation: fadeOut 0.5s ease;
 }
