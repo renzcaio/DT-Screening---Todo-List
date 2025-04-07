@@ -82,7 +82,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px; /* Space between the theme toggle and the title */
+    margin-bottom: 20px; 
 }
 
 #theme-toggle-button {
@@ -121,7 +121,7 @@ h1 {
     border-bottom: 1px solid #eee;
     transition: all 0.3s ease;
     cursor: move;
-    user-select: none; /* Disable text selection during dragging */
+    user-select: none; 
 }
 
 #task-list li.completed {
@@ -130,7 +130,7 @@ h1 {
 }
 
 #task-list li.dragging {
-    opacity: 0.5; /* Make dragged items semi-transparent */
+    opacity: 0.5; 
 }
 
 .task-text {
@@ -183,7 +183,7 @@ h1 {
     }
 }
 
-/* Animation when adding/removing tasks */
+/* Animation  */
 #task-list li.adding {
     animation: fadeIn 0.5s ease;
 }
